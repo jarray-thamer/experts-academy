@@ -49,12 +49,12 @@ const Navbar = () => {
           </Link>
         </div>
 
-        {/* Desktop Auth Buttons */}
+        {/* Desktop Buttons */}
         <div className="hidden md:flex items-center space-x-6">
-          <Link href="/auth/login" className="cursor-pointer">
+          <Link href="/login" className="cursor-pointer">
             <button className="text-blue-900 cursor-pointer">دخول</button>
           </Link>
-          <Link href="/auth/register" className="cursor-pointer">
+          <Link href="/register" className="cursor-pointer">
             <button className="cursor-pointer border-2 font-medium text-blue-900 border-blue-900 px-8 py-1 rounded-md hover:bg-blue-900 hover:text-white transition-colors duration-200 ease-in-out">
               سجل مجانا
             </button>
@@ -136,12 +136,12 @@ const Navbar = () => {
                 </Link>
                 <div className="flex flex-col space-y-6 w-full mt-12 items-end border-t border-blue-900/20 pt-8">
                   <Link
-                    href="/auth/login"
+                    href="/login"
                     className="text-blue-900 text-lg mx-auto font-medium pr-2"
                   >
                     دخول
                   </Link>
-                  <Link href="/auth/register" className="w-full mb-4">
+                  <Link href="/register" className="w-full mb-4">
                     <button className="w-full cursor-pointer border-2 font-medium text-blue-900 border-blue-900 px-8 py-2 rounded-md hover:bg-blue-900 hover:text-white transition-colors duration-200 ease-in-out">
                       سجل مجانا
                     </button>
