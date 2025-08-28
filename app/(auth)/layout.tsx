@@ -1,10 +1,8 @@
-import { ArrowLeftIcon } from "lucide-react";
-import Link from "next/link";
 import React, { ReactNode } from "react";
 
 const AuthLayout = ({ children }: { children: ReactNode }) => {
   return (
-    <div className="relative flex min-h-svh flex-col items-center justify-center bg-[#FCF8DD]">
+    <div className="relative flex min-h-svh flex-col items-center justify-center bg-background">
       <div className="flex w-full max-w-sm flex-col gap-6">
         {children}
         <div className="text-balance text-center text-xs text-muted-foreground">

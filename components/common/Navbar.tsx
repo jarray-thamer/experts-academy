@@ -10,10 +10,23 @@ import {
   SheetTitle,
 } from "@/components/ui/sheet";
 import { Menu, X } from "lucide-react";
+import { authClient } from "@/lib/auth-client";
+import { useRouter } from "next/navigation";
 
 const Navbar = () => {
+  const { data: session } = authClient.useSession();
+  const router = useRouter();
+  async function SignOut() {
+    await authClient.signOut({
+      fetchOptions: {
+        onSuccess: () => {
+          router.push("/login");
+        },
+      },
+    });
+  }
   return (
-    <nav className="w-full bg-[#FCF8DD]">
+    <nav className="w-full">
       <div className="flex items-center justify-between max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 h-16">
         {/* Logo/Brand */}
         <div className="flex items-center">
@@ -51,14 +64,20 @@ const Navbar = () => {
 
         {/* Desktop Buttons */}
         <div className="hidden md:flex items-center space-x-6">
-          <Link href="/login" className="cursor-pointer">
-            <button className="text-blue-900 cursor-pointer">دخول</button>
-          </Link>
-          <Link href="/register" className="cursor-pointer">
-            <button className="cursor-pointer border-2 font-medium text-blue-900 border-blue-900 px-8 py-1 rounded-md hover:bg-blue-900 hover:text-white transition-colors duration-200 ease-in-out">
-              سجل مجانا
+          {session ? (
+            <button
+              onClick={SignOut}
+              className="cursor-pointer border-2 font-medium text-blue-900 border-blue-900 px-8 py-1 rounded-md hover:bg-blue-900 hover:text-white transition-colors duration-200 ease-in-out"
+            >
+              خروج
             </button>
-          </Link>
+          ) : (
+            <Link href="/login" className="cursor-pointer">
+              <button className="cursor-pointer border-2 font-medium text-blue-900 border-blue-900 px-8 py-1 rounded-md hover:bg-blue-900 hover:text-white transition-colors duration-200 ease-in-out">
+                دخول
+              </button>
+            </Link>
+          )}
         </div>
 
         {/* Mobile Menu */}
@@ -135,17 +154,18 @@ const Navbar = () => {
                   إتصل بنا
                 </Link>
                 <div className="flex flex-col space-y-6 w-full mt-12 items-end border-t border-blue-900/20 pt-8">
-                  <Link
-                    href="/login"
-                    className="text-blue-900 text-lg mx-auto font-medium pr-2"
-                  >
-                    دخول
-                  </Link>
-                  <Link href="/register" className="w-full mb-4">
-                    <button className="w-full cursor-pointer border-2 font-medium text-blue-900 border-blue-900 px-8 py-2 rounded-md hover:bg-blue-900 hover:text-white transition-colors duration-200 ease-in-out">
-                      سجل مجانا
-                    </button>
-                  </Link>
+                  {session ? (
+                    <Button>Logout</Button>
+                  ) : (
+                    <Link href="/login" className="w-full mb-4">
+                      <button
+                        onClick={SignOut}
+                        className="w-full cursor-pointer border-2 font-medium text-blue-900 border-blue-900 px-8 py-2 rounded-md hover:bg-blue-900 hover:text-white transition-colors duration-200 ease-in-out"
+                      >
+                        دخول
+                      </button>
+                    </Link>
+                  )}
                 </div>
               </div>
             </SheetContent>

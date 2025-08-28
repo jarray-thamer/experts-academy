@@ -1,5 +1,4 @@
 "use client";
-
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -11,12 +10,12 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { authClient } from "@/lib/auth-client";
-import { Google } from "developer-icons";
 import { Loader2Icon } from "lucide-react";
+import { Google } from "developer-icons";
 import React, { useTransition } from "react";
 import { toast } from "sonner";
 
-const RegisterPage = () => {
+const LoginForm = () => {
   const [googleSignInPending, startGoogleSignInTransition] = useTransition();
 
   async function signInWithGoogle() {
@@ -62,7 +61,7 @@ const RegisterPage = () => {
             </>
           )}
         </Button>
-        <div className="relative my-4 text-center">
+        {/* <div className="relative my-4 text-center">
           <div className="absolute inset-0 flex items-center">
             <span className="w-full border-t border-border" />
           </div>
@@ -79,10 +78,10 @@ const RegisterPage = () => {
             <Input type="email" placeholder="m@example.com" />
           </div>
           <Button>تسجيل</Button>
-        </div>
+        </div> */}
       </CardContent>
     </Card>
   );
 };
 
-export default RegisterPage;
+export default LoginForm;
