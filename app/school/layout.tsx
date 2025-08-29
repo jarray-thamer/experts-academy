@@ -1,17 +1,8 @@
-import { auth } from "@/lib/auth";
-import { headers } from "next/headers";
-import { redirect } from "next/navigation";
 import React from "react";
-import { toast } from "sonner";
+import { requireUser } from "../data/user/require-user";
 
 const layout = async ({ children }: { children: React.ReactNode }) => {
-  const session = await auth.api.getSession({
-    headers: await headers(),
-  });
-  if (!session) {
-    // toast.error("يجب عليك تسجيل الدخول للوصول إلى هذه الصفحة");
-    redirect("/login");
-  }
+  await requireUser();
   return <div>{children}</div>;
 };
 

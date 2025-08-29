@@ -20,6 +20,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import Link from "next/link";
 
 export default function UserDropDown({
   signOut,
@@ -55,7 +56,7 @@ export default function UserDropDown({
       </DropdownMenuTrigger>
       <DropdownMenuContent className="max-w-64">
         <DropdownMenuLabel className="flex min-w-0 flex-col">
-          <span className="text-foreground truncate text-sm font-medium">
+          <span className="text-foreground truncate text-sm font-medium capitalize">
             {user?.name}
           </span>
           <span className="text-muted-foreground truncate text-xs font-normal">
@@ -64,16 +65,22 @@ export default function UserDropDown({
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
-          <DropdownMenuItem>
-            <BoltIcon size={16} className="opacity-60" aria-hidden="true" />
-            <span>Option 1</span>
+          <DropdownMenuItem asChild>
+            <Link href="/school">
+              <BookOpenIcon
+                size={16}
+                className="opacity-60"
+                aria-hidden="true"
+              />
+              <span>المنصة</span>
+            </Link>
           </DropdownMenuItem>
           <DropdownMenuItem>
             <Layers2Icon size={16} className="opacity-60" aria-hidden="true" />
-            <span>Option 2</span>
+            <span>Settings</span>
           </DropdownMenuItem>
           <DropdownMenuItem>
-            <BookOpenIcon size={16} className="opacity-60" aria-hidden="true" />
+            <BoltIcon size={16} className="opacity-60" aria-hidden="true" />
             <span>Option 3</span>
           </DropdownMenuItem>
         </DropdownMenuGroup>
