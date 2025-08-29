@@ -22,7 +22,7 @@ const LoginForm = () => {
     startGoogleSignInTransition(async () => {
       await authClient.signIn.social({
         provider: "google",
-        callbackURL: "/",
+        callbackURL: "/school",
         fetchOptions: {
           onSuccess: () => {
             toast.success("تم تسجيل الدخول بنجاح");

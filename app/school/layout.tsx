@@ -9,7 +9,7 @@ const layout = async ({ children }: { children: React.ReactNode }) => {
     headers: await headers(),
   });
   if (!session) {
-    toast.error("يجب عليك تسجيل الدخول للوصول إلى هذه الصفحة");
+    // toast.error("يجب عليك تسجيل الدخول للوصول إلى هذه الصفحة");
     redirect("/login");
   }
   return <div>{children}</div>;

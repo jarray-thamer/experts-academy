@@ -8,7 +8,7 @@ const LoginPage = async () => {
     headers: await headers(),
   });
   if (session) {
-    return redirect("/");
+    return redirect("/school");
   }
   return <LoginForm />;
 };
